@@ -1,19 +1,11 @@
 import numpy as np
 import math
-import RPi.GPIO as gpio
-import time
-gpio.setmode(gpio.BOARD)
+#link lengths of the robotic arm are entered
 a1 = 40.0
 a2 = 40.0
 a3 = 30.0
-s1 = 7
-s2 = 11
-s3 = 13
-s4 = 14
-gpio.setup(s1,gpio.OUT)
-gpio.setup(s2,gpio.OUT)
-gpio.setup(s3,gpio.OUT)
-gpio.setup(s4,gpio.OUT)
+#the required position of end effector is given as input
+#end effector position should be given as coordinates and rotation matrix in 3-D space 
 X = float(input('enter the X coordinate of the endeffector - '))
 Y = float(input('enter the Y coordinate of the endeffector - '))
 Z = float(input('enter the Z coordinate of the end effector - '))
@@ -23,8 +15,7 @@ for i in range(3):
         n = int(input('enter element of rotation matrix - '))
         R0_4[i][j] = n
 print(R0_4)
-#R0_4 = [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
-#R0_4.astype(float)
+#rotation parameters are calculated
 f = float(Y/X)
 t1 = np.arctan(f)
 r = np.sqrt(X**2+Y**2)
